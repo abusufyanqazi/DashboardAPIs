@@ -95,13 +95,13 @@ public partial class Invoker : System.Web.UI.Page
         utility util = new utility();
         DB_Utility objDbuTil = new DB_Utility(conStr);
         StringBuilder jsonString = new StringBuilder();
-        jsonString.Append("{");
-        jsonString.Append(@"""CollVsCompAssmnt"":{");
+        jsonString.Append("[");
+       // jsonString.Append(@"{");
         StringBuilder filterExp = new StringBuilder();
         string ret = "error";
         
         if (token != secKey)
-            return "Ivalid Token.";
+            return "Invalid Token.";
         try
         {
             
@@ -134,8 +134,7 @@ public partial class Invoker : System.Web.UI.Page
                 }
             }
 
-            jsonString.Append("}");
-                jsonString.Append("}");
+                jsonString.Append("]");
                 ret = jsonString.ToString();
            
         }
@@ -173,7 +172,8 @@ public partial class Invoker : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        string resp = "Blank";
+        
+       string resp = "Blank";
         try
         {
             resp = GetResponse();

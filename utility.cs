@@ -230,7 +230,6 @@ namespace util
                 string ColumnName = "SDIVCODE";
                 JSONString.Append("{");
                 JSONString.Append("\"" + cirCode + "\":[{");
-                //DataRow[] drCirDataArr = table.Select(ColumnName + "=" + cirCode);
                 DataRow[] drCirDataArr = GetFilteredRows(dt, ColumnName + "=" + cirCode);
                 for (int i = 0; i < drCirDataArr.Length; i++)
                 {
@@ -276,33 +275,41 @@ namespace util
             if (dt.Rows.Count > 0)
             {
                 string ColumnName = "SDIVCODE";
-                JSONString.Append("\"" + cirCode + "\":{");
-                //DataRow[] drCirDataArr = table.Select(ColumnName + "=" + cirCode);
+               
+                JSONString.Append("{"+"\"" + "Code" + "\"" + ":" + "\"" + cirCode + "\","  );
+                //JSONString.Append("\"" + "Name" + "\":" + "\"" + "{0}" + "\",");
+
                 DataRow[] drCirDataArr = GetFilteredRows(dt, ColumnName + "=" + cirCode);
                 for (int i = 0; i < drCirDataArr.Length; i++)
                 {
+                    JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() + "\",");
                     JSONString.Append("\"" + "CompAssmnt\":{");
+                   
                     JSONString.Append("\"" + "Private" + "\":" + "\"" + drCirDataArr[i]["PVT_COMP_ASSES"].ToString() +
                                       "\",");
                     JSONString.Append("\"" + "Govt" + "\":" + "\"" + drCirDataArr[i]["GVT_COMP_ASSES"].ToString() +
                                       "\",");
-                    JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["COMP_ASSES"].ToString() + "\",");
-                    JSONString.Append("\"" + "SDIVNAME" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() + "\"");
+                    JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["COMP_ASSES"].ToString() + "\"");
+               
                     JSONString.Append("},");
 
                     JSONString.Append("\"" + "Collection\":{");
+                    JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() +
+                        "\",");
                     JSONString.Append("\"" + "Private" + "\":" + "\"" + drCirDataArr[i]["PVT_COLL"].ToString() + "\",");
                     JSONString.Append("\"" + "Govt" + "\":" + "\"" + drCirDataArr[i]["GVT_COLL"].ToString() + "\",");
-                    JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["TOT_COLL"].ToString() + "\",");
-                    JSONString.Append("\"" + "SDIVNAME" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() + "\"");
+                    JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["TOT_COLL"].ToString() + "\"");
+               
                     JSONString.Append("},");
 
                     JSONString.Append("\"" + "Percentage\":{");
+                    JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() + 
+                        "\",");
                     JSONString.Append("\"" + "Private" + "\":" + "\"" + drCirDataArr[i]["PVT_PERCENT"].ToString() +
                                       "\",");
                     JSONString.Append("\"" + "Govt" + "\":" + "\"" + drCirDataArr[i]["GVT_PERCENT"].ToString() + "\",");
-                    JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["TOT_PERCENT"].ToString() + "\",");
-                    JSONString.Append("\"" + "SDIVNAME" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() + "\"");
+                    JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["TOT_PERCENT"].ToString() + "\"");
+               
                     JSONString.Append("}");
                     if (i == drCirDataArr.Length - 1)
                     {
