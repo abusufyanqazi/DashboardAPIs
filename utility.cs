@@ -145,7 +145,7 @@ namespace util
                 }
 
             }
-            else 
+            else
             {
                 JSONString.Append("No data found.");
             }
@@ -275,8 +275,8 @@ namespace util
             if (dt.Rows.Count > 0)
             {
                 string ColumnName = "SDIVCODE";
-               
-                JSONString.Append("{"+"\"" + "Code" + "\"" + ":" + "\"" + cirCode + "\","  );
+
+                JSONString.Append("{" + "\"" + "Code" + "\"" + ":" + "\"" + cirCode + "\",");
                 //JSONString.Append("\"" + "Name" + "\":" + "\"" + "{0}" + "\",");
 
                 DataRow[] drCirDataArr = GetFilteredRows(dt, ColumnName + "=" + cirCode);
@@ -284,32 +284,32 @@ namespace util
                 {
                     JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() + "\",");
                     JSONString.Append("\"" + "CompAssmnt\":{");
-                   
+
                     JSONString.Append("\"" + "Private" + "\":" + "\"" + drCirDataArr[i]["PVT_COMP_ASSES"].ToString() +
                                       "\",");
                     JSONString.Append("\"" + "Govt" + "\":" + "\"" + drCirDataArr[i]["GVT_COMP_ASSES"].ToString() +
                                       "\",");
                     JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["COMP_ASSES"].ToString() + "\"");
-               
+
                     JSONString.Append("},");
 
                     JSONString.Append("\"" + "Collection\":{");
-                    JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() +
-                        "\",");
+                  //  JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() +
+                  //      "\",");
                     JSONString.Append("\"" + "Private" + "\":" + "\"" + drCirDataArr[i]["PVT_COLL"].ToString() + "\",");
                     JSONString.Append("\"" + "Govt" + "\":" + "\"" + drCirDataArr[i]["GVT_COLL"].ToString() + "\",");
                     JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["TOT_COLL"].ToString() + "\"");
-               
+
                     JSONString.Append("},");
 
                     JSONString.Append("\"" + "Percentage\":{");
-                    JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() + 
-                        "\",");
+                   // JSONString.Append("\"" + "Name" + "\":" + "\"" + drCirDataArr[i]["SDIVNAME"].ToString() +
+                   //     "\",");
                     JSONString.Append("\"" + "Private" + "\":" + "\"" + drCirDataArr[i]["PVT_PERCENT"].ToString() +
                                       "\",");
                     JSONString.Append("\"" + "Govt" + "\":" + "\"" + drCirDataArr[i]["GVT_PERCENT"].ToString() + "\",");
                     JSONString.Append("\"" + "Total" + "\":" + "\"" + drCirDataArr[i]["TOT_PERCENT"].ToString() + "\"");
-               
+
                     JSONString.Append("}");
                     if (i == drCirDataArr.Length - 1)
                     {
@@ -368,7 +368,7 @@ namespace util
                 return null;
             }
         }
-      
+
         public string DataTableToJSONWithJavaScriptSerializer(DataTable table)
         {
             JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
